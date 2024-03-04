@@ -1,0 +1,22 @@
+<!-- cricket_chatbot/templates/cricket_chatbot/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Chatbot</title>
+</head>
+<body>
+    <h1>Cricket Chatbot</h1>
+    <form method="post" action="{% url 'chatbot_view' %}">
+        {% csrf_token %}
+        <label for="user_input">Ask a question:</label>
+        <input type="text" name="user_input" id="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
+    {% if user_input %}
+        <p>User: {{ user_input }}</p>
+        <p>Chatbot Response: {{ chatbot_response }}</p>
+    {% endif %}
+</body>
+</html>
